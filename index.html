@@ -1,75 +1,280 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Videy Viral</title>
+<title>Watch Full Video</title>
 
 <style>
-body {
-    margin: 0;
-    background: #000;
-    text-align: center;
-    color: #fff;
-    font-family: Arial;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+body{
+background:#111;
+color:white;
 }
 
-.video-wrapper {
-    position: relative;
-    cursor: pointer;
+.container{
+max-width:850px;
+margin:auto;
+padding:20px;
 }
 
-.video-wrapper iframe {
-    width: 100%;
-    height: 450px;
-    border-radius: 10px;
+.logo{
+text-align:center;
+font-size:34px;
+font-weight:bold;
+color:#25D366;
+margin-bottom:20px;
 }
 
-/* Overlay transparan untuk nangkap klik */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.player{
+position:relative;
+border-radius:18px;
+overflow:hidden;
+cursor:pointer;
+box-shadow:0 0 25px rgba(0,0,0,.5);
 }
+
+.player video{
+width:100%;
+display:block;
+background:black;
+}
+
+.play{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:95px;
+height:95px;
+border-radius:50%;
+background:#25D366;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:45px;
+color:white;
+pointer-events:none;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+0%{transform:translate(-50%,-50%) scale(1);}
+50%{transform:translate(-50%,-50%) scale(1.08);}
+100%{transform:translate(-50%,-50%) scale(1);}
+
+}
+
+.duration{
+position:absolute;
+bottom:15px;
+right:15px;
+background:rgba(0,0,0,.8);
+padding:6px 12px;
+border-radius:8px;
+}
+
+.title{
+
+margin-top:25px;
+text-align:center;
+
+}
+
+.title h1{
+
+font-size:34px;
+margin-bottom:10px;
+
+}
+
+.title p{
+
+color:#ccc;
+
+}
+
+.watch{
+
+margin-top:25px;
+display:block;
+background:#25D366;
+padding:18px;
+text-align:center;
+border-radius:12px;
+font-size:24px;
+font-weight:bold;
+text-decoration:none;
+color:white;
+
+}
+
+.watch:hover{
+
+background:#1fb356;
+
+}
+
+.info{
+
+display:flex;
+justify-content:space-around;
+margin-top:25px;
+text-align:center;
+font-size:14px;
+color:#bbb;
+
+}
+
+.gallery{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:30px;
+
+}
+
+.gallery img{
+
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:10px;
+
+}
+
+.footer{
+
+margin:30px 0;
+text-align:center;
+color:#777;
+font-size:13px;
+
+}
+
+@media(max-width:768px){
+
+.gallery{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.title h1{
+
+font-size:28px;
+
+}
+
+.watch{
+
+font-size:20px;
+
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
-    <h2>🔥 Videy Viral Hari Ini 🔥</h2>
 
-    <div class="video-wrapper" onclick="openAd()">
-        <iframe id="videoFrame"
-            src="video1"
-            allowfullscreen>
-        </iframe>
-        <div class="overlay"></div>
-    </div>
+<div class="logo">
+WATCH HD
+</div>
+
+<div class="player">
+
+<video
+id="video"
+poster="thumbnail.jpg"
+controls
+preload="none">
+
+<source src="video1.mp4" type="video/mp4">
+
+</video>
+
+<div class="play">
+▶
+</div>
+
+<div class="duration">
+01:24:56
+</div>
+
+</div>
+
+<div class="title">
+
+<h1>Watch Full HD Video</h1>
+
+<p>Fast streaming • HD quality • No registration</p>
+
+</div>
+
+<a href="#" class="watch" onclick="playVideo();return false;">
+▶ WATCH NOW
+</a>
+
+<div class="info">
+
+<div>
+⭐⭐⭐⭐⭐<br>
+4.9 Rating
+</div>
+
+<div>
+👁️ 1.8M Views
+</div>
+
+<div>
+🎥 HD 1080P
+</div>
+
+</div>
+
+<div class="gallery">
+
+<img src="foto1.jpg">
+
+<img src="foto2.jpg">
+
+<img src="foto3.jpg">
+
+<img src="foto4.jpg">
+
+</div>
+
+<div class="footer">
+
+© 2026 WatchHD
+
+</div>
+
 </div>
 
 <script>
-let sudahKlik = false;
 
-function openAd() {
-    if (!sudahKlik) {
-        window.open("https://injusticebakery.com/cz9v6wbtd?key=f8a454d7118e3225cb72a14af52be10c", "_blank");
-        sudahKlik = true;
-    }
+function playVideo(){
 
-    // Play video setelah klik pertama
-    let iframe = document.getElementById("videoFrame");
-    iframe.src += "&autoplay=1";
+document.getElementById("video").play();
+
 }
+
 </script>
 
 </body>
-  </html>
+    </html>
